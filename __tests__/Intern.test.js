@@ -1,19 +1,19 @@
 const Intern = require("../lib/Intern");
 
-test("creates Intern object", () => {
-  const intern = new Intern("Otis");
+test("Does constructor provide school?", () => {
+  const school = "USF";
+  const intern = new Intern("Otis", 999, "work@mail.com", school);
+  expect(intern.school).toBe(school);
+});
 
-  expect(intern.name).toBe("Otis");
-  expect(intern.id).toEqual(expect.any(Number));
-  expect(intern.school).toEqual(expect.any(String));
-  expect(intern.email).toEqual(expect.stringContaining("@"));
-  expect(intern.getName()).toEqual(
-    expect.stringContaining(intern.name));
-  expect(intern.getId()).toEqual(
-    expect.stringContaining(intern.id.toString()));
-  expect(intern.getEmail().toEqual(
-    expect.stringContaining(intern.email)));
-    expect(intern.getSchool().toEqual(
-      expect.stringContaining(intern.school)));
-  expect(intern.getRole()).toEqual("Intern")
-})
+test("Does getRole() return Intern?", () => {
+  const role = "Intern";
+  const intern = new Intern("Otis", 999, "work@mail.com", "USF");
+  expect(intern.getRole()).toBe(role);
+});
+
+test("Does getSchool() work?", () => {
+  const school = "USF";
+  const intern = new Intern("Otis", 999, "work@mail.com", school);
+  expect(intern.getSchool()).toBe(school);
+});

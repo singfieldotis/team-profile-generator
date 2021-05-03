@@ -1,17 +1,20 @@
-const Manager = require("../lib/Manager.js");
+const Manager = require("../lib/Manager");
+const Employee = require("../lib/Employee")
 
-test("creates Manager object", () => {
-  const manager = new Manager("Otis");
+test("Does constructor give office number?", () => {
+  const officeNum = 108;
+  const manager = new Manager("Otis", 999, "mail@work.com", officeNum);
+  expect(manager.officeNumber).toBe(officeNum);
+});
 
-  expect(manager.name).toBe("Otis");
-  expect(manager.id).toEqual(expect.any(Number));
-  expect(manager.officeNumber).toEqual(expect.any(Number));
-  expect(manager.email).toEqual(expect.stringContaining("@"));
-  expect(manager.getName()).toEqual(
-    expect.stringContaining(manager.name));
-  expect(manager.getId()).toEqual(
-    expect.stringContaining(manager.id.toString()));
-  expect(manager.getEmail().toEqual(
-    expect.stringContaining(manager.email)));
-  expect(manager.getRole()).toEqual("Manager")
+test("Does getRole() return Manager?", () => {
+  const role = "Manager";
+  const manager = new Manager("Otis", 999, "mail@work.com", 108);
+  expect(manager.getRole()).toBe(role);
 })
+
+test("Does getOffice() work?", () => {
+  const office = 108;
+  const manager = new Manager("Otis", 999, "mail@work.com", office);
+  expect(manager.getOfficeNumber()).toBe(office);
+});
